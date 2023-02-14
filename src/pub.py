@@ -17,6 +17,7 @@ client.on_subscribe = on_subscribe
 client.connect(host="127.0.0.1", port = 1883, keepalive=60)  # 订阅频道
 time.sleep(1)
 i = 0
+
 while True:
     try:
         # 发布MQTT信息

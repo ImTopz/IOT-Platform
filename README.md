@@ -8,7 +8,7 @@
 **开发语言**：python，nodejs
 
 ## 2.系统的整体架构
-
+![./docs/img.png](img.png)
 
 ## 3.系统的运行逻辑
 
