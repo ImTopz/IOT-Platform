@@ -1,11 +1,14 @@
+# coding=utf-8
 import random
 from paho.mqtt import client as mqtt_client
+from Common import loadConfig
 
 
-# port = 1883
-topic = "mqtt/demo"
-# generate client ID with pub prefix randomly
+TOPIC = "tempture/device1"
+
+
 client_id = f'python-mqtt-{random.randint(0, 100)}'
+
 
 
 def connect_mqtt() -> mqtt_client:
@@ -15,23 +18,22 @@ def connect_mqtt() -> mqtt_client:
         else:
             print("Failed to connect, return code %d\n", rc)
 
-
     client = mqtt_client.Client(client_id)
     client.on_connect = on_connect
-    client.connect(host='127.0.0.1', port=1883)
+    client.connect(host=loadConfig()['host']['ip'], port=loadConfig()['host']['port'])
     return client
 
 
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
-        print(f"Received `{msg.payload.decode()}` from `{msg.topic}` topic")
+        print(f"接收到传感器的温度数据`{msg.payload.decode()}` 来自 `{msg.topic}` 主题")
 
-    client.subscribe(topic)
+    client.subscribe(TOPIC)
     client.on_message = on_message
 
 
 def run():
-    client = connect_mqtt() #生成一个client对象
+    client = connect_mqtt()
     subscribe(client)
     client.loop_forever()
 

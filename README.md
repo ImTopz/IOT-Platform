@@ -16,6 +16,7 @@
 ![./docs/img.png](img.png)
 
 ## 3.系统的运行逻辑
+src是本项目的代码目录
  pub.py中模拟了传感器的数据采集，每5s进行一次数据采集，其中温度数据是通过random进行模拟随机实现
 将数据推送到 mqtt服务器中的 /tempture/device1 主题 
 ![img_2.png](img_2.png)
@@ -25,3 +26,5 @@
 
 
 ## 4.运行效果
+ ![img_4.png](img_4.png)
+ 在终端中可以看见成功的模拟了mqtt的client端和server端，实现了模拟传感器数据的上报 
