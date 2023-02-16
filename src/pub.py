@@ -21,10 +21,13 @@ def sendMsg(client):
     tempture = random.randint(-10,20)
     sensor_data = ' "time" : {} , "tempture" : {} '.format(str(time.time()),str(tempture))
     data = '{' + str(sensor_data) + '}'
-    data = json.loads(data)
+
     client.publish(topic=f'tempture/device1',payload=str(data),qos=1)
+    print(data)
     print("数据推送成功")
     time.sleep(5)
+
+
 
 
 if __name__ == '__main__':

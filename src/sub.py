@@ -5,7 +5,7 @@ from Common import loadConfig
 
 
 TOPIC = "tempture/device1"
-
+FLAG = False
 
 client_id = f'python-mqtt-{random.randint(0, 100)}'
 
@@ -26,7 +26,11 @@ def connect_mqtt() -> mqtt_client:
 
 def subscribe(client: mqtt_client):
     def on_message(client, userdata, msg):
+        global FLAG
         print(f"接收到传感器的温度数据`{msg.payload.decode()}` 来自 `{msg.topic}` 主题")
+        if(FLAG == False):
+            print(f"数据类型是{type(msg.payload.decode())}")
+            FLAG = True
 
     client.subscribe(TOPIC)
     client.on_message = on_message

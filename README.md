@@ -28,3 +28,7 @@ src是本项目的代码目录
 ## 4.运行效果
  ![img_4.png](img_4.png)
  在终端中可以看见成功的模拟了mqtt的client端和server端，实现了模拟传感器数据的上报 
+ 
+
+![img_3.png](img_3.png)
+前端采用node-red
